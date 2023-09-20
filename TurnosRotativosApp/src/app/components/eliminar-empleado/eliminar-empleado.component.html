@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eliminar empleado</title>
+        <link rel="stylesheet" href="eliminar-empleado.component.css">
+    </head>
+    <body>
+        <h1 mat-dialog-title>Eliminar Empleado</h1>
+        <div mat-dialog-content>
+            ¿Desea realmente eliminar este empleado?
+        </div>
+        <div mat-dialog-actions>
+            <button mat-flat-button [mat-dialog-close]="false" color="warn" (click)="deleteEmpleado()" cdkFocusInitial>Eliminar</button>
+            <button mat-stroked-button [mat-dialog-close]="false">Cancelar</button>
+        </div>
+    </body>
+</html>

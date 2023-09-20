@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CrearEmpleadoComponent } from './components/crear-empleado/crear-empleado.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActualizarEmpleadoComponent } from './components/actualizar-empleado/actualizar-empleado.component';
+import { EliminarEmpleadoComponent } from './components/eliminar-empleado/eliminar-empleado.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ActualizarEmpleadoComponent } from './components/actualizar-empleado/ac
     HomeComponent,
     CrearEmpleadoComponent,
     ActualizarEmpleadoComponent,
+    EliminarEmpleadoComponent,
   ],
   imports: [
     BrowserModule,

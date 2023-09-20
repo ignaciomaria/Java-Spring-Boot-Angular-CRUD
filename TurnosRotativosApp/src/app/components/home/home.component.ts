@@ -7,6 +7,8 @@ import { EmpleadoServiceService } from '../service/empleado.service.service';
 import { CrearEmpleadoComponent } from '../crear-empleado/crear-empleado.component';
 import { ActualizarEmpleadoComponent } from '../actualizar-empleado/actualizar-empleado.component';
 import { MatDialog } from '@angular/material/dialog';
+import { EliminarEmpleadoComponent } from '../eliminar-empleado/eliminar-empleado.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -46,7 +48,6 @@ export class HomeComponent implements OnInit {
     this.dialogF.open(CrearEmpleadoComponent, {height: 'auto', width: '600px'}).afterClosed().subscribe({
       next:() => {
         this.getAll();
-        console.log('Agregar');
       }
     })
     
@@ -56,16 +57,14 @@ export class HomeComponent implements OnInit {
     this.dialogF.open(ActualizarEmpleadoComponent,{height: 'auto', width: '600px', data:id}).afterClosed().subscribe({
       next:() => {
         this.getAll();
-        console.log('Editar');
-      }
+      },
     });  
   }
 
   eliminarEmpleado(id:number){
-    this.empleadoService.deleteEmpleado(id).subscribe({
+    this.dialogF.open(EliminarEmpleadoComponent, {width: '250px', data:id}).afterClosed().subscribe({
       next:() =>{
         this.getAll();
-        console.log('Eliminar');
       }
     });
   }
@@ -77,10 +76,6 @@ export class HomeComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         console.log(empl);
-      },
-      error: (e) =>{
-        console.log(e);
-        this.dataSource.data = [];
       }
     });
   }
@@ -88,9 +83,5 @@ export class HomeComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    /*if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }*/
   }
 }
