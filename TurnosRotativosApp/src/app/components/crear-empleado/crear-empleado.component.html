@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Crear Empleado</title>
+        <link rel="stylesheet" href="crear-empleado.component.css">
+    </head>
+    <body>
+        <header>
+            <div class="titulo">
+                <h1><b>Ingresa un nuevo empleado</b></h1>
+            </div>
+        </header>
+        <main>
+            <div class="formulario-contenedor">
+                <form [formGroup]="empleadoForm" (ngSubmit)="onSubmit()" class="formulario">
+                    <mat-form-field appearance="fill">
+                        <input matInput type="text" placeholder="Nombre..." formControlName="nombre" required>
+                    </mat-form-field><br>
+                    <mat-form-field appearance="fill">
+                        <input matInput type="text" placeholder="Apellido..." formControlName="apellido" required>
+                    </mat-form-field><br>
+                    <mat-form-field appearance="fill">
+                        <input matInput type="number" placeholder="Nro Documento..." formControlName="nroDocumento" required>
+                    </mat-form-field><br>
+                    <mat-form-field appearance="fill">
+                        <input matInput type="email" placeholder="Ej. test@gmail.com" formControlName="email" required>
+                    </mat-form-field><br>
+                    <mat-form-field appearance="fill">
+                        <input matInput [matDatepicker]="pickerFNacimiento" placeholder="Fecha de nacimiento" formControlName="fechaNacimiento" required>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="pickerFNacimiento"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerFNacimiento></mat-datepicker>
+                    </mat-form-field><br>
+                    <mat-form-field appearance="fill">
+                        <input matInput [matDatepicker]="pickerFIngreso" placeholder="Fecha de ingreso" formControlName="fechaIngreso" required>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="pickerFIngreso"></mat-datepicker-toggle>
+                        <mat-datepicker #pickerFIngreso></mat-datepicker>
+                    </mat-form-field><br>
+                    <div mat-dialog-actions class="botones">
+                        <button mat-flat-button [mat-dialog-close]="false" type="submit" color="primary" cdkFocusInitial>Agregar</button>
+                        <button mat-flat-button [mat-dialog-close]="false" type="button" color="warn">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>
