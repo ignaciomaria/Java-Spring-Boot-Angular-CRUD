@@ -22,8 +22,10 @@ export class ActualizarEmpleadoComponent {
               private _snackBar: MatSnackBar){
     this.empleadoForm = formB.group({
       nroDocumento: new FormControl('', [Validators.min(12000000), Validators.max(99999999)]),
-      nombre: new FormControl('', [Validators.pattern(this.nombreYApellidoPattern)]),
-      apellido: new FormControl('', [Validators.pattern(this.nombreYApellidoPattern)]),
+      nombre: new FormControl('', [Validators.pattern(this.nombreYApellidoPattern),
+                                  Validators.minLength(2), Validators.maxLength(30)]),
+      apellido: new FormControl('', [Validators.pattern(this.nombreYApellidoPattern),
+                                    Validators.minLength(2), Validators.maxLength(30)]),
       email: new FormControl('', [Validators.pattern('^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@' 
                                                   + '[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$')]),
       fechaNacimiento: new FormControl(''),
@@ -37,6 +39,16 @@ export class ActualizarEmpleadoComponent {
     this.empleadoService.updateEmpleado(this.idEmpleado, this.empleadoForm.value).subscribe({
       next: () =>{
         this._snackBar.open('Empleado actualizado con exito', 'OK',{duration: 3000});
+        console.log('ok');
+      },
+      error: (error) =>{
+        console.log('Error: ', error);
+
+        if(!this.empleadoForm.valid){ //informa si el form esta vacio o tiene campos erroneos
+          alert('Formulario invalido, vuelva a intentarlo');
+        }else{
+          this.empleadoService.errorHandler(error); //mensaje error
+        }
       }
     });
   }

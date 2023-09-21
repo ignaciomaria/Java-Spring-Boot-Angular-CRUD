@@ -1,27 +1,18 @@
 # TurnosRotativosApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.9.
+Aplicacion CRUD realizada en Angular para consumir la API Turnos Rotativos.
 
-## Development server
+## Descripcion
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+ - La aplicacion realiza las tareas de crear, actualizar y eliminar empleados
+    del sistema. Los empleados seran listados en una tabla principal.
 
-## Code scaffolding
+ - La estructura cuenta con una interface para el Empleado, y un service 
+    donde se comunica con el servidor.
+    Se creo un componente Home, el cual se comunmica con los componentes para
+    crear, actualizar y eliminar un Empleado.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+ - Las validaciones se trabajan en componente en particular, utilizando un 
+    manejador de errores para dar informacion al usuario.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+ - Los imports para cada angular material se trasladaron al modulo shared en components.

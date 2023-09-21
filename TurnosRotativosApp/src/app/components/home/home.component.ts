@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
   }
 
   agregarEmpleado(){
-    this.dialogF.open(CrearEmpleadoComponent, {height: 'auto', width: '600px'}).afterClosed().subscribe({
+    this.dialogF.open(CrearEmpleadoComponent, {height: 'auto', width: '600px', disableClose: true}).afterClosed().subscribe({
       next:() => {
         this.getAll();
       }
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
   }
 
   actualizarEmpleado(id:number){
-    this.dialogF.open(ActualizarEmpleadoComponent,{height: 'auto', width: '600px', data:id}).afterClosed().subscribe({
+    this.dialogF.open(ActualizarEmpleadoComponent,{height: 'auto', width: '600px', disableClose: true, data:id}).afterClosed().subscribe({
       next:() => {
         this.getAll();
       },
